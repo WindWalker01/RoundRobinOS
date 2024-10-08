@@ -1,3 +1,5 @@
+import ganttchart.GanttChart;
+
 import javax.swing.*;
 
 public  class Window extends JFrame {
@@ -13,7 +15,7 @@ public  class Window extends JFrame {
         setLayout(null);
 
 
-        
+        add(new GanttChart());
     }
 
 

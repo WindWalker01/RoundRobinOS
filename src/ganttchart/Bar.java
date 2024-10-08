@@ -6,7 +6,7 @@ import java.awt.*;
 public class Bar extends JPanel {
 
     private JLabel processName;
-    private JLabel timeStarted;
+    private JLabel endTime;
 
     public Bar(int startTime, String name, Dimension size){
         setLayout(null);
@@ -17,14 +17,14 @@ public class Bar extends JPanel {
         processName.setForeground(Color.WHITE);
         processName.setFont(new Font("Serif", Font.PLAIN, 20));
 
-        timeStarted = new JLabel("" + startTime);
+        endTime = new JLabel("" + startTime);
 
-        timeStarted.setBounds(10, size.height - 40, 50, 50);
-        timeStarted.setForeground(Color.WHITE);
-        timeStarted.setFont(new Font("Serif", Font.PLAIN, 20));
+        endTime.setBounds(size.width - 20, size.height - 40, 50, 50);
+        endTime.setForeground(Color.WHITE);
+        endTime.setFont(new Font("Serif", Font.PLAIN, 20));
 
         add(processName);
-        add(timeStarted);
+        add(endTime);
     }
 
 }

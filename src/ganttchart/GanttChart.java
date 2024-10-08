@@ -6,32 +6,51 @@ import java.util.ArrayList;
 
 public class GanttChart extends JPanel {
 
+    private JLabel startTimeLabel;
+    private JLabel endTimeLabel;
+
     public GanttChart() {
+
+
         setLayout(null);
         setSize(1080, 100);
-        setBackground(Color.BLACK);
+        setBackground(new Color(0, 0, 0, 0));
         setLocation(90, 520);
 
-        setChart();
+        startTimeLabel = new JLabel("0");
+        startTimeLabel.setBounds(0, getHeight() - 65, 50, 50);
+        startTimeLabel.setForeground(Color.BLACK);
+        startTimeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+
+
+        endTimeLabel = new JLabel();
+        endTimeLabel.setBounds(getWidth() - 20, getHeight() - 65, 50, 50);
+        endTimeLabel.setText(setChart() + "");
+        endTimeLabel.setForeground(Color.BLACK);
+        endTimeLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+
+        add(startTimeLabel);
+        add(endTimeLabel);
+
+
     }
 
 
     private Color[] colors = {
             new Color(22, 66, 60),
       new Color(137, 103, 179),
-      new Color(238, 102, 166),
-      new Color(201, 104, 104),
-      new Color(183, 224, 255),
-      new Color(255, 225, 255),
 };
 
 
-    
-    public void setChart(){
+    // Quantum
+
+
+    public int setChart(){
         int currentTime = 0;
-        for (int i = 0; i < 6; i++) {
-            Bar bar1 = new Bar(currentTime,"p1", new Dimension(3 * 60, 100));
-            bar1.setBackground(colors[i]);
+        int size = 6;
+        for (int i = 0; i < size; i++) {
+            Bar bar1 = new Bar(currentTime,"P" + (i + 1), new Dimension(getWidth() / size, 50));
+            bar1.setBackground(colors[i % colors.length]);
 
             bar1.setLocation(bar1.getWidth() * i, 0);
             add(bar1);
@@ -39,5 +58,6 @@ public class GanttChart extends JPanel {
         }
 
 
+        return 28;
     }
 }

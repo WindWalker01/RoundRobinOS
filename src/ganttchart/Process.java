@@ -1,3 +1,5 @@
+package ganttchart;
+
 public class Process {
     public int arrivalTime;
     public int burstTime;

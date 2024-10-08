@@ -3,13 +3,12 @@ import ganttchart.GanttChart;
 import javax.swing.*;
 
 public  class Window extends JFrame {
-        JFrame frame;
         JLabel label;
 
     public Window(int width, int height) {
 
 
-        frame.setSize(500, 800);
+        setSize(1280, 720);
         setTitle("Round Robin");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

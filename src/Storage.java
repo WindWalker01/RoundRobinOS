@@ -25,8 +25,8 @@ class Node {
     }
 }
 
-class LinkedList {
-    Node firstNode = null;
+class List {
+    static Node firstNode = null;
     Node lastNode = null;
 
     //Accepts the user information gathered from main
@@ -49,26 +49,33 @@ class LinkedList {
             System.out.println(user.arrivalTime + " " + user.burstTime);
             current = current.next;
         }
+
     }
 }
 
 public class Storage {
+    static int processNum;
+    static int arrivalTime;
+    static int  burstTime;
+    static int quantumTime;
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        LinkedList list = new LinkedList();
+        List list = new List();
 
         System.out.print("Number of processes");
-        int processNum = scanner.nextInt();
+        processNum = scanner.nextInt();
         scanner.nextLine();
 
         for (int i = 0; i < processNum; i++) {
 
 
             System.out.print("Enter Arrival Time: ");
-            int arrivalTime = scanner.nextInt();
+            arrivalTime = scanner.nextInt();
 
             System.out.print("Enter Burst Time: ");
-            int  burstTime = scanner.nextInt();
+            burstTime = scanner.nextInt();
 
 
 
@@ -78,8 +85,14 @@ public class Storage {
             list.addUser(user);
         }
 
+        System.out.println("Enter Quantum Time: ");
+        quantumTime = scanner.nextInt();
+
+
         //Call display method from Linked List Class
-        list.display();
-        scanner.close();
+        Process.processScheduling(list);
+
     }
 }
+
+

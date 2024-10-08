@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Process {
     static void findWaitingTime(int processes[], int n,
                                 int bt[], int wt[],
@@ -11,8 +13,7 @@ public class Process {
 
         int t = 0; // Current time
 
-        // Keep traversing processes in round robin manner
-        // until all of them are not done.
+
         while (true) {
             boolean done = true;
 
@@ -89,7 +90,7 @@ public class Process {
 
         // Display processes along with all details
         System.out.println("PN "
-                + " B "
+                + " BT "
                 + " WT "
                 + " TAT");
 
@@ -109,18 +110,28 @@ public class Process {
                 + (float)total_tat / (float)n);
     }
 
+
     // Driver Method
-    public static void main(String[] args)
-    {
-        // process id's
-        int processes[] = { 1, 2, 3 };
-        int n = processes.length;
+    public static void processScheduling(List list) {
+        Node current = List.firstNode;
+        int[] burst_time = new int[Storage.processNum];
+        int index = 0;
 
-        // Burst time of all processes
-        int burst_time[] = { 10, 5, 8 };
+        while (current != null) {
+            User user = current.data;
+            burst_time[index] = user.burstTime;
+            current = current.next;
+            index++;
+        }
 
-        // Time quantum
-        int quantum = 2;
+        int n = burst_time.length;
+        int quantum = Storage.quantumTime;
+        int[] processes = new int[n];  // Array to store process IDs (could just be 1, 2, 3,...)
+        for (int i = 0; i < n; i++) {
+            processes[i] = i + 1;
+        }
+
+        // Call the method to calculate average time using round-robin scheduling
         findavgTime(processes, n, burst_time, quantum);
     }
 }

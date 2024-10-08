@@ -2,14 +2,14 @@ import java.util.ArrayList;
 
 public class Process {
     static void findWaitingTime(int processes[], int n,
-                                int bt[], int wt[],
+                                int burstTime[], int waitingTime[],
                                 int quantum)
     {
         // Make a copy of burst times bt[] to store
         // remaining burst times.
-        int rem_bt[] = new int[n];
+        int[] remainingBurstTime = new int[n];
         for (int i = 0; i < n; i++)
-            rem_bt[i] = bt[i];
+            remainingBurstTime[i] = burstTime[i];
 
         int t = 0; // Current time
 
@@ -21,11 +21,11 @@ public class Process {
             for (int i = 0; i < n; i++) {
                 // If burst time of a process is greater
                 // than 0 then only need to process further
-                if (rem_bt[i] > 0) {
+                if (remainingBurstTime[i] > 0) {
                     done = false; // There is a pending
                     // process
 
-                    if (rem_bt[i] > quantum) {
+                    if (remainingBurstTime[i] > quantum) {
                         // Increase the value of t i.e.
                         // shows how much time a process has
                         // been processed
@@ -33,7 +33,7 @@ public class Process {
 
                         // Decrease the burst_time of
                         // current process by quantum
-                        rem_bt[i] -= quantum;
+                        remainingBurstTime[i] -= quantum;
                     }
 
                     // If burst time is smaller than or
@@ -43,16 +43,16 @@ public class Process {
                         // Increase the value of t i.e.
                         // shows how much time a process has
                         // been processed
-                        t = t + rem_bt[i];
+                        t = t + remainingBurstTime[i];
 
                         // Waiting time is current time
                         // minus time used by this process
-                        wt[i] = t - bt[i];
+                        waitingTime[i] = t - burstTime[i];
 
                         // As the process gets fully
                         // executed make its remaining burst
                         // time = 0
-                        rem_bt[i] = 0;
+                        remainingBurstTime[i] = 0;
                     }
                 }
             }
@@ -78,15 +78,15 @@ public class Process {
     static void findavgTime(int processes[], int n,
                             int bt[], int quantum)
     {
-        int wt[] = new int[n], tat[] = new int[n];
-        int total_wt = 0, total_tat = 0;
+        int waitingTime[] = new int[n], turnaroundTime[] = new int[n];
+        int total_waitinTime = 0, total_tat = 0;
 
         // Function to find waiting time of all processes
-        findWaitingTime(processes, n, bt, wt, quantum);
+        findWaitingTime(processes, n, bt, waitingTime, quantum);
 
         // Function to find turn around time for all
         // processes
-        findTurnAroundTime(processes, n, bt, wt, tat);
+        findTurnAroundTime(processes, n, bt, waitingTime, turnaroundTime);
 
         // Display processes along with all details
         System.out.println("PN "
@@ -97,15 +97,15 @@ public class Process {
         // Calculate total waiting time and total turn
         // around time
         for (int i = 0; i < n; i++) {
-            total_wt = total_wt + wt[i];
-            total_tat = total_tat + tat[i];
+            total_waitinTime = total_waitinTime + waitingTime[i];
+            total_tat = total_tat + turnaroundTime[i];
             System.out.println(" " + (i + 1) + "\t\t"
-                    + bt[i] + "\t " + wt[i]
-                    + "\t\t " + tat[i]);
+                    + bt[i] + "\t " + waitingTime[i]
+                    + "\t\t " + turnaroundTime[i]);
         }
 
         System.out.println("Average waiting time = "
-                + (float)total_wt / (float)n);
+                + (float)total_waitinTime / (float)n);
         System.out.println("Average turn around time = "
                 + (float)total_tat / (float)n);
     }

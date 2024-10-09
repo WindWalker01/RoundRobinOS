@@ -69,9 +69,5 @@ public class Window extends JFrame {
         table.setBounds(700, 50, 500, 400);
         add(table);
 
-
-//        processes.add(new Process(0, 3, "P1"));
-//        processes.add(new Process(0, 10, "P2"));
-
     }
 }

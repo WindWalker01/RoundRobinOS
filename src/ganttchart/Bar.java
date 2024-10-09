@@ -7,11 +7,13 @@ public class Bar extends JPanel {
 
     private JLabel processName;
     private JLabel endTime;
+    public String processId;
 
     public int endT;
 
     public Bar(int endT, String name){
         this.endT = endT;
+        this.processId = name;
 
         setLayout(null);
         processName = new JLabel(name);

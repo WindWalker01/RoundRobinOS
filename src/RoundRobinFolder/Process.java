@@ -1,5 +1,7 @@
 package RoundRobinFolder;
 
+import java.awt.*;
+
 public class Process {
 
     public int id;
@@ -9,6 +11,8 @@ public class Process {
     public int finishTime;
     public int turnAroundTime;
     public  int waitingTime;
+
+    public Color color;
 
     public Process(int id, int arrivalTime, int burstTime) {
         this.id = id;

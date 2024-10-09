@@ -75,54 +75,6 @@ public class GanttChart extends JPanel {
             add(Data.bars.get(i));
             endTimeLabel.setText(String.valueOf(Data.bars.get(i).endT));
         }
-
-
-
-//        for (int i = 0; i < processes.size(); i++) {
-//                       if(processes.get(i).burstTime == 0){
-//                processes.get(i).isDone = true;
-//            }
-//
-//
-//            if(processes.get(i).isDone){
-//                currentTime += processes.get(i).burstTime;
-//            }else{
-//                currentTime += 3;
-//            }
-//
-//            Bar bar1 = new Bar(currentTime,"P" + (i + 1), new Dimension(getWidth() / processes.size(), 50));
-//            bar1.setBackground(colors[i % colors.length]);
-//
-//            bar1.setLocation(bar1.getWidth() * i, 0);
-//            add(bar1);
-//
-//
-//        }
-
-//        for (int i = 0; i < processes.size(); i++) {
-//            for (int j = 0; j < processes.size(); j++) {
-//                if (processes.get(j).isDone) continue;
-//                if(processes.get(j).burstTime <= 0) processes.get(j).isDone = true;
-//
-//                // if there's only one process left
-//                if(processes.size() == 1){
-//
-//                }
-//
-//                currentTime += processes.get(j).burstTime;
-//                Bar bar = new Bar(currentTime, processes.get(j).name, new Dimension((currentTime == 0? 1 : currentTime) * 20,50));
-//                bar.setBackground(colors[j % colors.length]);
-//                bar.setLocation(bar.getWidth() * j, 0);
-//                add(bar);
-//                processes.get(j).burstTime -= Window.quantum;
-//
-//            }
-//        }
-
-
-
-
-
     }
 }
 

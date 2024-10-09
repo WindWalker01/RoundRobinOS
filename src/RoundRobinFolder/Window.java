@@ -4,6 +4,7 @@ import ganttchart.GanttChart;
 import ganttchart.Process;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Window extends JFrame {
@@ -12,6 +13,24 @@ public class Window extends JFrame {
     public static ArrayList<Process> processes = new ArrayList<>();
 
     public static int quantum = 3;
+
+    private String[] burst = {
+            "20",
+            "20",
+            "20",
+            "20",
+            "20",
+    };
+
+    private String[] arrival = {
+            "20",
+            "1",
+            "2",
+            "30",
+            "40",
+            "10",
+
+    };
 
     public Window(int width, int height) {
         setSize(width, height);
@@ -31,5 +50,11 @@ public class Window extends JFrame {
 
         // Make frame visible
         setVisible(true);
+
+
+        Table table = new Table(burst, arrival);
+        table.setBounds(700, 50, 500, 500);
+
+        add(table);
     }
 }

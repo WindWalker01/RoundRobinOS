@@ -8,7 +8,7 @@ public class Bar extends JPanel {
     private JLabel processName;
     private JLabel endTime;
 
-    public Bar(int startTime, String name, Dimension size){
+    public Bar(int endT, String name, Dimension size){
         setLayout(null);
         setSize(size);
         processName = new JLabel(name);
@@ -17,7 +17,7 @@ public class Bar extends JPanel {
         processName.setForeground(Color.WHITE);
         processName.setFont(new Font("Serif", Font.PLAIN, 20));
 
-        endTime = new JLabel("" + startTime);
+        endTime = new JLabel("" + endT);
 
         endTime.setBounds(size.width - 20, size.height - 40, 50, 50);
         endTime.setForeground(Color.WHITE);

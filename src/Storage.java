@@ -90,7 +90,7 @@ public class Storage {
 
 
         //Call display method from Linked List Class
-        Process.processScheduling(list);
+//        Process.processScheduling(list);
 
     }
 }

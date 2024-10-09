@@ -1,6 +1,6 @@
 package ganttchart;
 
-import RoundRobin.Window;
+import RoundRobinFolder.Window;
 
 import javax.swing.*;
 import java.awt.*;

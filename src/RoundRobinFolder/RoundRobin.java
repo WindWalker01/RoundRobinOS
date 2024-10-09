@@ -1,34 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Process {
-    int id, arrivalTime, burstTime, remainingTime, finishTime, turnAroundTime, waitingTime;
-    public Process(int id, int arrivalTime, int burstTime) {
-        this.id = id;
-        this.arrivalTime = arrivalTime;
-        this.burstTime = burstTime;
-        this.remainingTime = burstTime;
-    }
-}
+import RoundRobinFolder.Process;
+import RoundRobinFolder.ProcessDetails;
 
 
-class ProcessDetails {
-    int arrivalTime;
-    int burstTime;
-    int finishTime;
-    int turnAroundTime;
-    int waitingTime;
-    int executionStartTime;
 
-    public ProcessDetails(int arrivalTime, int burstTime, int finishTime, int turnAroundTime, int waitingTime, int executionStartTime) {
-        this.arrivalTime = arrivalTime;
-        this.burstTime = burstTime;
-        this.finishTime = finishTime;
-        this.turnAroundTime = turnAroundTime;
-        this.waitingTime = waitingTime;
-        this.executionStartTime = executionStartTime;
-    }
-}
 
 
 public class RoundRobin {

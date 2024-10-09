@@ -13,7 +13,7 @@ public class InputPanel extends JPanel {
 
     public InputPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Set vertical layout
-        setBounds(50, 50, 500, 300);
+        setBounds(50, 50, 500, 200);
 
         // Labels
         JLabel inp = new JLabel("Input: ");
@@ -87,7 +87,9 @@ public class InputPanel extends JPanel {
                         tburst.setVisible(false);
                         arrivalLabel.setVisible(false);
                         tarrival.setVisible(false);
-                        bcompute.setVisible(false); // Hide submit button after final input
+                        bcompute.setVisible(false);
+                        inp.setVisible(false);
+                        add(new Table(burstTimes, arrivalTimes));
                     }
 
                     // Clear the text fields for the next input

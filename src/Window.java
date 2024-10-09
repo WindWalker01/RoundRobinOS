@@ -1,3 +1,5 @@
+import ganttchart.GanttChart;
+
 import javax.swing.*;
 
 public class Window extends JFrame {
@@ -12,6 +14,10 @@ public class Window extends JFrame {
 
         InputPanel inputPanel = new InputPanel();
         add(inputPanel);
+
+        // pang test lang sa code ni rasil
+        //GanttChart ganttChart = new GanttChart();
+        //add(ganttChart);
 
         // Make frame visible
         setVisible(true);

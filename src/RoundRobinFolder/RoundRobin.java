@@ -1,5 +1,8 @@
 package RoundRobinFolder;
 
+import ganttchart.Bar;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,6 +12,9 @@ public class RoundRobin {
     private int timeQuanta;
     static int numProcesses;
     public static ArrayList<Integer> startTime = new ArrayList<>();
+
+    public static double averageTurnAroundTime;
+    public static double averageWaitingTime;
 
 
     public RoundRobin(int timeQuanta) {
@@ -89,7 +95,11 @@ public class RoundRobin {
                                 currentProcess.finishTime, currentProcess.turnAroundTime, currentProcess.waitingTime, executionStartTime);
                         completedProcesses++;
                     }
+                    Data.bars.add(new Bar(currentTime, "P" + currentProcess.id));
                 }
+
+
+
             }
 
 
@@ -100,30 +110,34 @@ public class RoundRobin {
             }
         }
 
+        int index = 0;
+        for (Bar bar : Data.bars) {
+            bar.resizeBar(new Dimension(
+                    (1080 / Data.bars.size()),
+                    50));
+            index++;
+        }
+
         ArrayList<Process> result = new ArrayList<>();
         for (int i = 0; i < numProcesses; i++) {
             result.add(processes[i]);
         }
+
         return result;
     }
 
-    private static void displayResults(Process[] processes) {
+    public static String displayResults(Process[] processes) {
         int totalTurnaroundTime = 0, totalWaitingTime = 0;
 
 
 
-        System.out.println("Time line: ");
-        System.out.println(startTime);
 
 
 
 
-        System.out.println("\nProcess ID | Arrival Time | Burst Time | Finish Time | Turnaround Time | Waiting Time");
         for (int i = 0; i < processes.length; i++) {
             Process process = processes[i];
-            System.out.printf("%9d | %12d | %10d | %11d | %15d | %12d\n",
-                    process.id, process.arrivalTime, process.burstTime,
-                    process.finishTime, process.turnAroundTime, process.waitingTime);
+
 
             totalTurnaroundTime += process.turnAroundTime;
             totalWaitingTime += process.waitingTime;
@@ -138,8 +152,8 @@ public class RoundRobin {
         double avgTurnaroundTime = (double) totalTurnaroundTime / processes.length;
         double avgWaitingTime = (double) totalWaitingTime / processes.length;
 
-        System.out.printf("\nAverage Turnaround Time: %.2f\n", avgTurnaroundTime);
-        System.out.printf("Average Waiting Time: %.2f\n", avgWaitingTime);
+
+        return "Average Turn around time is " + avgTurnaroundTime + " and Average Waiting time is " + avgWaitingTime;
     }
 
 

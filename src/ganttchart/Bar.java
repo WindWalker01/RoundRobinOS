@@ -8,23 +8,32 @@ public class Bar extends JPanel {
     private JLabel processName;
     private JLabel endTime;
 
-    public Bar(int endT, String name, Dimension size){
+    public int endT;
+
+    public Bar(int endT, String name){
+        this.endT = endT;
+
         setLayout(null);
-        setSize(size);
         processName = new JLabel(name);
 
-        processName.setBounds(size.width / 2, 0, size.width, size.height);
         processName.setForeground(Color.WHITE);
-        processName.setFont(new Font("Serif", Font.PLAIN, 20));
+        processName.setFont(new Font("Serif", Font.PLAIN, 10));
 
         endTime = new JLabel("" + endT);
 
-        endTime.setBounds(size.width - 20, size.height - 40, 50, 50);
         endTime.setForeground(Color.WHITE);
-        endTime.setFont(new Font("Serif", Font.PLAIN, 20));
+        endTime.setFont(new Font("Serif", Font.PLAIN, 10));
 
         add(processName);
         add(endTime);
+    }
+
+
+    public void resizeBar(Dimension d){
+        setSize(d);
+        processName.setBounds(d.width / 2, 0, d.width, d.height);
+        endTime.setBounds(d.width - 20, d.height - 40, 50, 50);
+
     }
 
 }

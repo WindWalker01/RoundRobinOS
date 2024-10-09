@@ -1,5 +1,7 @@
 package RoundRobinFolder;
 
+import ganttchart.GanttChart;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -91,11 +93,12 @@ public class InputPanel extends JPanel {
                         tarrival.setVisible(false);
                         bcompute.setVisible(false); // Hide submit button after final input
 
+
+                        Window.quantumField.setEditable(false);
                         for (int i = 0; i < burstTimes.length; i++) {
                             Data.processes.add(new Process(i + 1, Integer.parseInt(arrivalTimes[i]), Integer.parseInt(burstTimes[i])));
                         }
 
-                        table.setTableData(Data.processes);
                         System.out.println("Finish");
                         Window.summaryDescription.setVisible(true);
 
@@ -111,6 +114,10 @@ public class InputPanel extends JPanel {
                         for (Process p : Data.processes) {
                             System.out.println(p.turnAroundTime);
                         }
+
+                        Window.chart.createGanttChart();
+                        table.setTableData(Data.processes);
+                        Window.summaryDescription.setText(RoundRobin.displayResults(temp));
 
                     }
 

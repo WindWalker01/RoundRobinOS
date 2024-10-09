@@ -1,36 +1,18 @@
 package RoundRobinFolder;
 
+import ganttchart.GanttChart;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Window extends JFrame {
-
-
-    public static ArrayList<Process> processes = new ArrayList<>();
-
-    public static int quantum = 3;
-
-    private String[] burst = {
-            "20",
-            "20",
-            "20",
-            "20",
-            "20",
-    };
-
-    private String[] arrival = {
-            "20",
-            "1",
-            "2",
-            "30",
-            "40",
-            "10",
-
-    };
-
     public static JTextField summaryDescription;
     public static JTextField quantumField;
+
+    public static GanttChart chart = new GanttChart();
+
+    private JLabel titleLabel;
 
 
 
@@ -42,14 +24,24 @@ public class Window extends JFrame {
         setLayout(null);
         setResizable(false);
 
+
+        titleLabel = new JLabel("Round Robin - Gantt Chart");
+        titleLabel.setForeground(Color.BLACK);
+        titleLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        titleLabel.setBounds(550, 475, getWidth() / 2, 50);
+        add(titleLabel);
+
+
+
         JLabel quantumLabel = new JLabel("Enter Quantum");
-        quantumField = new JTextField();
+        quantumField = new JTextField("1");
 
         summaryDescription = new JTextField("Lorem Ipsum\nlorem");
         summaryDescription.setEditable(false);
         summaryDescription.setBounds(50, 100, 500, 250);
         summaryDescription.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 0)));
         summaryDescription.setVisible(false);
+        summaryDescription.setFont(new Font("Serif", Font.BOLD, 14));
 
         add(summaryDescription);
 
@@ -59,6 +51,7 @@ public class Window extends JFrame {
 
         add(quantumField);
         add(quantumLabel);
+        add(chart);
 
 
         setUp();
@@ -79,8 +72,6 @@ public class Window extends JFrame {
 
 //        processes.add(new Process(0, 3, "P1"));
 //        processes.add(new Process(0, 10, "P2"));
-
-//        add(new GanttChart());
 
     }
 }

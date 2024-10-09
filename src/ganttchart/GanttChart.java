@@ -13,6 +13,7 @@ public class GanttChart extends JPanel {
     private JLabel startTimeLabel;
     private JLabel endTimeLabel;
 
+
     private Color[] colors = {
             new Color(22, 66, 60),
             new Color(137, 103, 179),
@@ -30,6 +31,8 @@ public class GanttChart extends JPanel {
     public void createGanttChart() {
         removeAll();
 
+
+
         startTimeLabel = new JLabel("0");
         startTimeLabel.setBounds(0, getHeight() - 65, 50, 50);
         startTimeLabel.setForeground(Color.BLACK);
@@ -45,14 +48,24 @@ public class GanttChart extends JPanel {
         add(startTimeLabel);
         add(endTimeLabel);
 
-        updateGanttChart(Data.processes);
+        updateGanttChart();
     }
 
 
     // Quantum
 
-    public void updateGanttChart(ArrayList<Process> processes){
+    public void updateGanttChart(){
         int currentTime = 0;
+
+        for(int i = 0; i < Data.bars.size(); i++){
+
+            Data.bars.get(i).setBackground(colors[i % colors.length]);
+            Data.bars.get(i).setLocation(Data.bars.get(i).getWidth() * i, 0);
+            add(Data.bars.get(i));
+            endTimeLabel.setText(String.valueOf(Data.bars.get(i).endT));
+        }
+
+
 
 //        for (int i = 0; i < processes.size(); i++) {
 //                       if(processes.get(i).burstTime == 0){
@@ -97,7 +110,6 @@ public class GanttChart extends JPanel {
 
 
 
-        endTimeLabel.setText(String.valueOf(currentTime));
 
 
     }

@@ -13,7 +13,7 @@ public class InputPanel extends JPanel {
     String[] burstTimes;
     String[] arrivalTimes;
 
-    public InputPanel() {
+    public InputPanel(Table table) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Set vertical layout
         setBounds(50, 50, 500, 300);
 
@@ -90,6 +90,28 @@ public class InputPanel extends JPanel {
                         arrivalLabel.setVisible(false);
                         tarrival.setVisible(false);
                         bcompute.setVisible(false); // Hide submit button after final input
+
+                        for (int i = 0; i < burstTimes.length; i++) {
+                            Data.processes.add(new Process(i + 1, Integer.parseInt(arrivalTimes[i]), Integer.parseInt(burstTimes[i])));
+                        }
+
+                        table.setTableData(Data.processes);
+                        System.out.println("Finish");
+                        Window.summaryDescription.setVisible(true);
+
+
+                        Process[] temp = new Process[burstTimes.length];
+
+                        for (int i = 0; i < temp.length; i++) {
+                            temp[i] = new Process(i + 1, Integer.parseInt(arrivalTimes[i]), Integer.parseInt(burstTimes[i]));
+                        }
+
+                        Data.processes = new RoundRobin(Integer.parseInt(Window.quantumField.getText())).roundRobinScheduling(temp, burstTimes.length, new ProcessDetails[burstTimes.length]);
+
+                        for (Process p : Data.processes) {
+                            System.out.println(p.turnAroundTime);
+                        }
+
                     }
 
                     // Clear the text fields for the next input

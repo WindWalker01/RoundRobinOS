@@ -1,51 +1,51 @@
+package RoundRobinFolder;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import RoundRobinFolder.Process;
-import RoundRobinFolder.ProcessDetails;
-
-
-
 
 
 public class RoundRobin {
     private static final int MAX_PROCESSES = 6;
-    private static int timeQuanta;
+    private int timeQuanta;
     static int numProcesses;
     public static ArrayList<Integer> startTime = new ArrayList<>();
 
 
+    public RoundRobin(int timeQuanta) {
+        this.timeQuanta = timeQuanta;
+    }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-
-        System.out.print("Enter number of processes (up to 6): ");
-        numProcesses = Math.min(scanner.nextInt(), MAX_PROCESSES);
-
-        Process[] processes = new Process[numProcesses];
-        ProcessDetails[] processDetailsArray = new ProcessDetails[numProcesses];
-
-        for (int i = 0; i < numProcesses; i++) {
-            System.out.println("Enter arrival time" + (i + 1) + ": ");
-            int arrivalTime = scanner.nextInt();
-            System.out.println("Enter burst time" + (i + 1) + ": ");
-            int burstTime = scanner.nextInt();
-            processes[i] = new Process(i + 1, arrivalTime, burstTime);
-        }
-
-
-        System.out.print("Enter time quanta: ");
-        timeQuanta = scanner.nextInt();
-
-
-        roundRobinScheduling(processes, numProcesses, processDetailsArray);
-
-
-        displayResults(processes);
+//        Scanner scanner = new Scanner(System.in);
+//
+//
+//        System.out.print("Enter number of processes (up to 6): ");
+//        numProcesses = Math.min(scanner.nextInt(), MAX_PROCESSES);
+//
+//        Process[] processes = new Process[numProcesses];
+//        ProcessDetails[] processDetailsArray = new ProcessDetails[numProcesses];
+//
+//        for (int i = 0; i < numProcesses; i++) {
+//            System.out.println("Enter arrival time" + (i + 1) + ": ");
+//            int arrivalTime = scanner.nextInt();
+//            System.out.println("Enter burst time" + (i + 1) + ": ");
+//            int burstTime = scanner.nextInt();
+//            processes[i] = new Process(i + 1, arrivalTime, burstTime);
+//        }
+//
+//
+//        System.out.print("Enter time quanta: ");
+//        timeQuanta = scanner.nextInt();
+//
+//
+//        roundRobinScheduling(processes, numProcesses, processDetailsArray);
+//
+//
+//        displayResults(processes);
 
     }
 
-    private static void roundRobinScheduling(Process[] processes, int numProcesses, ProcessDetails[] processDetailsArray) {
+    public ArrayList<Process> roundRobinScheduling(Process[] processes, int numProcesses, ProcessDetails[] processDetailsArray) {
         int currentTime = 0;
         int completedProcesses = 0;
 
@@ -99,6 +99,12 @@ public class RoundRobin {
 
             }
         }
+
+        ArrayList<Process> result = new ArrayList<>();
+        for (int i = 0; i < numProcesses; i++) {
+            result.add(processes[i]);
+        }
+        return result;
     }
 
     private static void displayResults(Process[] processes) {

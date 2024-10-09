@@ -1,5 +1,7 @@
 package ganttchart;
 
+import RoundRobinFolder.Data;
+import RoundRobinFolder.Process;
 import RoundRobinFolder.Window;
 
 import javax.swing.*;
@@ -22,6 +24,12 @@ public class GanttChart extends JPanel {
         setBackground(new Color(0, 0, 0, 0));
         setLocation(90, 520);
 
+    }
+
+
+    public void createGanttChart() {
+        removeAll();
+
         startTimeLabel = new JLabel("0");
         startTimeLabel.setBounds(0, getHeight() - 65, 50, 50);
         startTimeLabel.setForeground(Color.BLACK);
@@ -37,14 +45,13 @@ public class GanttChart extends JPanel {
         add(startTimeLabel);
         add(endTimeLabel);
 
-        setChart(Window.processes);
-
-
+        updateGanttChart(Data.processes);
     }
+
 
     // Quantum
 
-    public void setChart(ArrayList<Process> processes){
+    public void updateGanttChart(ArrayList<Process> processes){
         int currentTime = 0;
 
 //        for (int i = 0; i < processes.size(); i++) {
@@ -68,25 +75,25 @@ public class GanttChart extends JPanel {
 //
 //        }
 
-        for (int i = 0; i < processes.size(); i++) {
-            for (int j = 0; j < processes.size(); j++) {
-                if (processes.get(j).isDone) continue;
-                if(processes.get(j).burstTime <= 0) processes.get(j).isDone = true;
-
-                // if there's only one process left
-                if(processes.size() == 1){
-
-                }
-
-                currentTime += processes.get(j).burstTime;
-                Bar bar = new Bar(currentTime, processes.get(j).name, new Dimension((currentTime == 0? 1 : currentTime) * 20,50));
-                bar.setBackground(colors[j % colors.length]);
-                bar.setLocation(bar.getWidth() * j, 0);
-                add(bar);
-                processes.get(j).burstTime -= Window.quantum;
-
-            }
-        }
+//        for (int i = 0; i < processes.size(); i++) {
+//            for (int j = 0; j < processes.size(); j++) {
+//                if (processes.get(j).isDone) continue;
+//                if(processes.get(j).burstTime <= 0) processes.get(j).isDone = true;
+//
+//                // if there's only one process left
+//                if(processes.size() == 1){
+//
+//                }
+//
+//                currentTime += processes.get(j).burstTime;
+//                Bar bar = new Bar(currentTime, processes.get(j).name, new Dimension((currentTime == 0? 1 : currentTime) * 20,50));
+//                bar.setBackground(colors[j % colors.length]);
+//                bar.setLocation(bar.getWidth() * j, 0);
+//                add(bar);
+//                processes.get(j).burstTime -= Window.quantum;
+//
+//            }
+//        }
 
 
 

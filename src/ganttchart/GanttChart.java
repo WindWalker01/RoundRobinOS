@@ -95,3 +95,4 @@ public class GanttChart extends JPanel {
 
     }
 }
+

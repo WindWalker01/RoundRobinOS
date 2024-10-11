@@ -36,7 +36,7 @@ public class Window extends JFrame {
         mTitle = new JLabel("Round Robin");
         mTitle.setForeground(Color.BLACK);
         mTitle.setFont(new Font("Serif", Font.PLAIN, 100));
-        mTitle.setBounds(400, 180, getWidth() / 2, 100);
+        mTitle.setBounds(390, 180, getWidth() / 2, 100);
         add(mTitle);
 
         mGroup = new JLabel("by Group 1");
@@ -52,16 +52,16 @@ public class Window extends JFrame {
 
         summaryDescription = new JTextField("Lorem Ipsum\nlorem");
         summaryDescription.setEditable(false);
-        summaryDescription.setBounds(50, 100, 500, 250);
+        summaryDescription.setBounds(180, 100, 500, 250);
         summaryDescription.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 0)));
         summaryDescription.setVisible(false);
-        summaryDescription.setFont(new Font("Serif", Font.BOLD, 14));
+        summaryDescription.setFont(new Font("Serif", Font.BOLD, 16));
 
         add(summaryDescription);
 
 
-        quantumLabel.setBounds(500, 320, 100, 30);
-        quantumField.setBounds(600, 320, 100, 30);
+        quantumLabel.setBounds(560, 320, 100, 30);
+        quantumField.setBounds(660, 320, 100, 30);
 
         add(quantumField);
         add(quantumLabel);

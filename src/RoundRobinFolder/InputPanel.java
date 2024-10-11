@@ -27,8 +27,8 @@ public class InputPanel extends JPanel{
 
         // TextField
         JTextField tprocess = new JTextField("", 10);
-        tburst = new JTextField("", 20);
-        tarrival = new JTextField("", 20);
+        tburst = new JTextField("", 24);
+        tarrival = new JTextField("", 25);
 
         // Set preferred size for JTextFields
         Dimension textFieldSize = new Dimension(200, 30);
@@ -92,7 +92,7 @@ public class InputPanel extends JPanel{
                     } else {
                         // If all processes are entered, hide the fields
                           setVisible(false);
-                            Window w = new Window();
+                          new Window();
 
 
                         Window.quantumField.setEditable(false);

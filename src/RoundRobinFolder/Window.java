@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class Window extends JFrame {
     public static JTextField summaryDescription;
     public static JTextField quantumField;
-
+    public static JLabel quantumLabel;
     public static GanttChart chart = new GanttChart();
-
-    private JLabel titleLabel;
-
+    private static JLabel titleLabel;
+    public static JLabel mTitle;
+    public static JLabel mGroup;
 
 
     public Window(int width, int height) {
@@ -31,9 +31,23 @@ public class Window extends JFrame {
         titleLabel.setBounds(550, 475, getWidth() / 2, 50);
         add(titleLabel);
 
+        titleLabel.setVisible(false);
+
+        mTitle = new JLabel("Round Robin");
+        mTitle.setForeground(Color.BLACK);
+        mTitle.setFont(new Font("Serif", Font.PLAIN, 100));
+        mTitle.setBounds(400, 180, getWidth() / 2, 100);
+        add(mTitle);
+
+        mGroup = new JLabel("by Group 1");
+        mGroup.setForeground(Color.BLACK);
+        mGroup.setFont(new Font("Serif", Font.PLAIN, 17));
+        mGroup.setBounds(800, 270, getWidth() / 2, 25);
+        add(mGroup);
 
 
-        JLabel quantumLabel = new JLabel("Enter Quantum");
+
+         quantumLabel = new JLabel("Enter Quantum: ");
         quantumField = new JTextField("1");
 
         summaryDescription = new JTextField("Lorem Ipsum\nlorem");
@@ -46,20 +60,26 @@ public class Window extends JFrame {
         add(summaryDescription);
 
 
-        quantumLabel.setBounds(10, 10, 100, 30);
-        quantumField.setBounds(110, 10, 100, 30);
+        quantumLabel.setBounds(500, 320, 100, 30);
+        quantumField.setBounds(600, 320, 100, 30);
 
         add(quantumField);
         add(quantumLabel);
         add(chart);
-
-
         setUp();
 
         setVisible(true);
 
     }
-
+    // para lumipat sa top right yung quantum at maghide sa iba
+    public Window(){
+        quantumLabel.setBounds(850, 10, 100, 30);
+        quantumField.setBounds(930, 10, 100, 30);
+        quantumLabel.setText("Quantum: ");
+        mTitle.setVisible(false);
+        titleLabel.setVisible(true);
+        mGroup.setVisible(false);
+    }
 
     public void setUp(){
         Table table = new Table();

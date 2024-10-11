@@ -6,7 +6,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class InputPanel extends JPanel {
+public class InputPanel extends JPanel{
     int procval = 1;  // Starts at 1 for user display purposes
     JLabel burst;
     JLabel arrivalLabel;
@@ -16,8 +16,8 @@ public class InputPanel extends JPanel {
     String[] arrivalTimes;
 
     public InputPanel(Table table) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Set vertical layout
-        setBounds(50, 50, 500, 300);
+        setLayout(new FlowLayout(FlowLayout.CENTER)); // Set vertical layout
+        setBounds(400, 350, 500, 300);
 
         // Labels
         JLabel inp = new JLabel("Input: ");
@@ -31,7 +31,7 @@ public class InputPanel extends JPanel {
         tarrival = new JTextField("", 20);
 
         // Set preferred size for JTextFields
-        Dimension textFieldSize = new Dimension(200, 20);
+        Dimension textFieldSize = new Dimension(200, 30);
         tprocess.setPreferredSize(textFieldSize);
         tburst.setPreferredSize(textFieldSize);
         tarrival.setPreferredSize(textFieldSize);
@@ -39,6 +39,10 @@ public class InputPanel extends JPanel {
         // JButton
         JButton b = new JButton("Submit Number of Processes");
         JButton bcompute = new JButton("Submit Burst and Arrival Time");
+        b.setFocusable(false);
+        bcompute.setFocusable(false);
+        b.setBackground(Color.lightGray);
+        bcompute.setBackground(Color.lightGray);
 
         b.addActionListener(new ActionListener() {
             @Override
@@ -87,11 +91,8 @@ public class InputPanel extends JPanel {
                         arrivalLabel.setText("Input P" + procval + " Arrival Time: ");
                     } else {
                         // If all processes are entered, hide the fields
-                        burst.setVisible(false);
-                        tburst.setVisible(false);
-                        arrivalLabel.setVisible(false);
-                        tarrival.setVisible(false);
-                        bcompute.setVisible(false); // Hide submit button after final input
+                          setVisible(false);
+                            Window w = new Window();
 
 
                         Window.quantumField.setEditable(false);
@@ -144,6 +145,7 @@ public class InputPanel extends JPanel {
         add(bcompute);
 
         // Set the visibility of burst fields to false initially
+        inp.setVisible(false);
         burst.setVisible(false);
         tburst.setVisible(false);
         burst.setText("Input P" + procval + " Burst Time: ");

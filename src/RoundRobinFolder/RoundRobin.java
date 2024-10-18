@@ -4,6 +4,8 @@ import ganttchart.Bar;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -41,6 +43,7 @@ public class RoundRobin {
 //
 //
 //        System.out.print("Enter time quanta: ");
+
 //        timeQuanta = scanner.nextInt();
 //
 //
@@ -55,66 +58,57 @@ public class RoundRobin {
         int currentTime = 0;
         int completedProcesses = 0;
 
-        //diko malagay na zero yung una kaya mano mano na :>
-        startTime.add(0);
+        // Sort processes by arrival time
+        Arrays.sort(processes, Comparator.comparingInt(p -> p.arrivalTime));
+
+        startTime.add(0);  // Initial start time at 0
 
         while (completedProcesses < numProcesses) {
-
             boolean idle = true;
 
             for (int i = 0; i < numProcesses; i++) {
-
                 Process currentProcess = processes[i];
 
-
-
-
-
+                // Check if process has arrived and has remaining time
                 if (currentProcess.arrivalTime <= currentTime && currentProcess.remainingTime > 0) {
                     idle = false;
 
-
-
                     int executionStartTime = currentTime;
+                    int execTime = Math.min(currentProcess.remainingTime, timeQuanta);  // Process executes for either time quanta or remaining time
 
-
-                    int execTime = Math.min(currentProcess.remainingTime, timeQuanta);
                     currentProcess.remainingTime -= execTime;
-                    currentTime += execTime;
+                    currentTime += execTime;  // Increment current time by the time process executed
                     startTime.add(currentTime);
-
-
-
-
 
                     if (currentProcess.remainingTime == 0) {
                         currentProcess.finishTime = currentTime;
                         currentProcess.turnAroundTime = currentProcess.finishTime - currentProcess.arrivalTime;
                         currentProcess.waitingTime = currentProcess.turnAroundTime - currentProcess.burstTime;
-                        processDetailsArray[i] = new ProcessDetails(currentProcess.arrivalTime, currentProcess.burstTime,
-                                currentProcess.finishTime, currentProcess.turnAroundTime, currentProcess.waitingTime, executionStartTime);
+
+                        processDetailsArray[i] = new ProcessDetails(
+                                currentProcess.arrivalTime,
+                                currentProcess.burstTime,
+                                currentProcess.finishTime,
+                                currentProcess.turnAroundTime,
+                                currentProcess.waitingTime,
+                                executionStartTime
+                        );
                         completedProcesses++;
                     }
+
                     Data.bars.add(new Bar(currentTime, "P" + currentProcess.id));
                 }
-
-
-
             }
 
-
             if (idle) {
+                // No process ready to execute, increment time
                 currentTime++;
-
-
             }
         }
 
         int index = 0;
         for (Bar bar : Data.bars) {
-            bar.resizeBar(new Dimension(
-                    (1080 / Data.bars.size()),
-                    50));
+            bar.resizeBar(new Dimension((1080 / Data.bars.size()), 50));
             index++;
         }
 

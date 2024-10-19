@@ -47,7 +47,7 @@ public class Window extends JFrame {
 
 
 
-         quantumLabel = new JLabel("Enter Quantum: ");
+        quantumLabel = new JLabel("Enter Quantum: ");
         quantumField = new JTextField("1");
 
         summaryDescription = new JTextField("Lorem Ipsum\nlorem");

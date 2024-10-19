@@ -14,7 +14,6 @@ public class RoundRobin {
     private int timeQuanta;
     static int numProcesses;
     public static ArrayList<Integer> startTime = new ArrayList<>();
-
     public static double averageTurnAroundTime;
     public static double averageWaitingTime;
 
@@ -58,10 +57,10 @@ public class RoundRobin {
         int currentTime = 0;
         int completedProcesses = 0;
 
-        // Sort processes by arrival time
+        //Sort process (Arrival Time)
         Arrays.sort(processes, Comparator.comparingInt(p -> p.arrivalTime));
 
-        startTime.add(0);  // Initial start time at 0
+        startTime.add(0);  //start time mano mano
 
         while (completedProcesses < numProcesses) {
             boolean idle = true;
@@ -69,7 +68,7 @@ public class RoundRobin {
             for (int i = 0; i < numProcesses; i++) {
                 Process currentProcess = processes[i];
 
-                // Check if process has arrived and has remaining time
+
                 if (currentProcess.arrivalTime <= currentTime && currentProcess.remainingTime > 0) {
                     idle = false;
 
@@ -101,32 +100,30 @@ public class RoundRobin {
             }
 
             if (idle) {
-                // No process ready to execute, increment time
                 currentTime++;
             }
         }
+
 
         int index = 0;
         for (Bar bar : Data.bars) {
             bar.resizeBar(new Dimension((1080 / Data.bars.size()), 50));
             index++;
         }
-
+        //sort back (based on process id)
+        Arrays.sort(processes, Comparator.comparingInt(id -> id.id));
         ArrayList<Process> result = new ArrayList<>();
         for (int i = 0; i < numProcesses; i++) {
             result.add(processes[i]);
         }
+
+
 
         return result;
     }
 
     public static String displayResults(Process[] processes) {
         int totalTurnaroundTime = 0, totalWaitingTime = 0;
-
-
-
-
-
 
 
         for (int i = 0; i < processes.length; i++) {
@@ -143,9 +140,8 @@ public class RoundRobin {
 
         }
 
-        double avgTurnaroundTime = (double) totalTurnaroundTime / processes.length;
-        double avgWaitingTime = (double) totalWaitingTime / processes.length;
-
+        String avgTurnaroundTime = String.format("%.2f", (double) totalTurnaroundTime / processes.length);
+        String avgWaitingTime = String.format("%.2f", (double) totalWaitingTime / processes.length);
 
         return "Average Turn around time is " + avgTurnaroundTime + " and Average Waiting time is " + avgWaitingTime;
     }

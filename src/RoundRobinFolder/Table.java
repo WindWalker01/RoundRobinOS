@@ -37,7 +37,7 @@ public class Table extends JPanel {
             data[i][5] = String.valueOf(processes.get(i).waitingTime);
         }
 
-        String[] column = {"Process ID", "Burst Time", "Arrival Time", "Finish Time", "Turn Around Time", "Waiting Time"};
+        String[] column = {"Process ID", "Burst Time", "Arrival Time", "End Time", "Turn Around Time", "Waiting Time"};
         JTable jt = new JTable(data, column);
         JScrollPane sp = new JScrollPane(jt);
         add(sp, BorderLayout.CENTER);

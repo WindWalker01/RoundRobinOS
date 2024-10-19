@@ -135,11 +135,11 @@ public class InputPanel extends JPanel{
         add(process);
         add(tprocess);
         add(Box.createRigidArea(new Dimension(0, 10)));
-        add(burst);
-        add(tburst);
-        add(Box.createRigidArea(new Dimension(0, 10)));
         add(arrivalLabel);
         add(tarrival);
+        add(Box.createRigidArea(new Dimension(0, 10)));
+        add(burst);
+        add(tburst);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(b);
         add(bcompute);

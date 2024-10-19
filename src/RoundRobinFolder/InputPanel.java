@@ -38,7 +38,7 @@ public class InputPanel extends JPanel{
 
         // JButton
         JButton b = new JButton("Submit Number of Processes");
-        JButton bcompute = new JButton("Submit Burst and Arrival Time");
+        JButton bcompute = new JButton("Submit Arrival and Burst Time");
         b.setFocusable(false);
         bcompute.setFocusable(false);
         b.setBackground(Color.lightGray);
@@ -79,8 +79,9 @@ public class InputPanel extends JPanel{
                     burstTimes[procval - 1] = tburst.getText();  // Store burst time
                     arrivalTimes[procval - 1] = tarrival.getText(); // Store arrival time
 
-                    System.out.println("Burst Times: " + String.join(", ", burstTimes));
                     System.out.println("Arrival Times: " + String.join(", ", arrivalTimes));
+                    System.out.println("Burst Times: " + String.join(", ", burstTimes));
+
 
                     // Increment procval after storing times
                     procval++;

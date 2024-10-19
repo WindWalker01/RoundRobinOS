@@ -57,7 +57,7 @@ public class Window extends JFrame {
         summaryDescription.setVisible(false);
         summaryDescription.setFont(new Font("Serif", Font.BOLD, 16));
 
-        add(summaryDescription);
+       add(summaryDescription);
 
 
         quantumLabel.setBounds(560, 320, 100, 30);

@@ -3,6 +3,7 @@ package RoundRobinFolder;
 import ganttchart.GanttChart;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -54,8 +55,8 @@ public class Window extends JFrame {
         summaryDescription.setEditable(false);
         summaryDescription.setBounds(180, 100, 500, 250);
         summaryDescription.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 0)));
-        summaryDescription.setVisible(false);
         summaryDescription.setFont(new Font("Serif", Font.BOLD, 16));
+        summaryDescription.setVisible(false);
 
        add(summaryDescription);
 
@@ -65,8 +66,13 @@ public class Window extends JFrame {
 
         add(quantumField);
         add(quantumLabel);
-        add(chart);
+
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 2); // 2-pixel black border
+       chart.setBorder(border);
+
         setUp();
+        add(chart);
+
 
         setVisible(true);
 

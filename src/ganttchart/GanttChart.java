@@ -49,6 +49,7 @@ public class GanttChart extends JPanel {
         add(endTimeLabel);
 
         updateGanttChart();
+        repaint();
     }
 
 

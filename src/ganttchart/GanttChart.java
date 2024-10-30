@@ -15,12 +15,12 @@ public class GanttChart extends JPanel {
 
 
     private Color[] colors = {
-            new Color(22, 66, 60),
-            new Color(137, 103, 179),
-            new Color(37, 113, 128),
-            new Color(242, 229, 191),
-            new Color(253, 139, 81),
-            new Color(203, 96, 64),
+            new Color(0, 43, 91),
+            new Color(46, 8, 84),
+            new Color(51, 51, 51),
+            new Color(74, 0, 31),
+            new Color(0, 76, 76),
+            new Color(1, 68, 33),
     };
 
     public GanttChart() {

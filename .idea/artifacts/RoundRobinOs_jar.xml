@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RoundRobinOs:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RoundRobinOs_jar</output-path>
+    <root id="archive" name="RoundRobinOs.jar">
+      <element id="module-output" name="RoundRobinOs" />
+    </root>
+  </artifact>
+</component>

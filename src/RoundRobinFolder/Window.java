@@ -15,16 +15,18 @@ public class Window extends JFrame {
     private static JLabel titleLabel;
     public static JLabel mTitle;
     public static JLabel mGroup;
+    ImageIcon logo = new ImageIcon("RR.png");   // added logo
 
 
     public Window(int width, int height) {
+        setIconImage(logo.getImage());
         setSize(width, height);
         setTitle("Round Robin");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
         setResizable(false);
-
+      //  getContentPane().setBackground(new Color(0,0,0,0)); pang iba lang ng bg if gusto naten
 
         titleLabel = new JLabel("Round Robin - Gantt Chart");
         titleLabel.setForeground(Color.BLACK);
@@ -66,10 +68,7 @@ public class Window extends JFrame {
 
         add(quantumField);
         add(quantumLabel);
-
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 2); // 2-pixel black border
-       chart.setBorder(border);
-
+        
         setUp();
         add(chart);
 
